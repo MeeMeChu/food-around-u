@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "recommend-food",
-    "slug": "recommend-food",
+    "name": "food-around-u",
+    "slug": "food-around-u",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

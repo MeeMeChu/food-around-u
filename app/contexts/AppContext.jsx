@@ -1,9 +1,9 @@
 import React, { createContext, useContext } from 'react'
-import { DefaultTheme, PaperProvider } from 'react-native-paper';
+import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
 
 const AppContext = createContext({});
 
-export const useTheme = () => useContext(AppContext);
+export const useApp = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
 
@@ -11,7 +11,7 @@ export const AppProvider = ({ children }) => {
         ...DefaultTheme,
         colors : {
             ...DefaultTheme.colors,
-            primarry: '#6C63FF',
+            primary: '#B10000',
         },
         fonts: {
             regular: {
@@ -21,7 +21,11 @@ export const AppProvider = ({ children }) => {
             medium: {
                 fontFamily: 'NotoSansThai-Bold',
                 fontWeight: 'normal',
-            }
+            },
+            h1: {
+                fontFamily: 'NotoSansThai-Regular',
+                fontSize: 20,
+            },
         },
     };
 
