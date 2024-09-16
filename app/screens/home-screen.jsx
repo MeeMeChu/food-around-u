@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, StyleSheet, TextInput, FlatList, Image } from "react-native";
+import { View, StyleSheet, TextInput, FlatList, Image, ScrollView } from "react-native";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useApp } from "../contexts/AppContext";
@@ -26,6 +26,51 @@ const category = [
         id: '4',
         name: "อาหารเกาหลี",
         image: require('./../../assets/images/image4.png'),
+    },
+]
+
+const foodList = [
+    {
+        id: '1',
+        title: 'เต่าตั้งเตา',
+        image: require('./../../assets/images/image2.png'),
+        type: 'ปิ้งย่าง',
+        star: '5.0',
+    },
+    {
+        id: '2',
+        title: 'เต่าตั้งเตา',
+        image: require('./../../assets/images/image3.png'),
+        type: 'ปิ้งย่าง',
+        star: '5.0',
+    },
+    {
+        id: '3',
+        title: 'เต่าตั้งเตา',
+        image: require('./../../assets/images/image4.png'),
+        type: 'ปิ้งย่าง',
+        star: '5.0',
+    },
+    {
+        id: '4',
+        title: 'เต่าตั้งเตา',
+        image: require('./../../assets/images/image4.png'),
+        type: 'ปิ้งย่าง',
+        star: '5.0',
+    },
+    {
+        id: '5',
+        title: 'เต่าตั้งเตา',
+        image: require('./../../assets/images/image4.png'),
+        type: 'ปิ้งย่าง',
+        star: '5.0',
+    },
+    {
+        id: '6',
+        title: 'เต่าตั้งเตา',
+        image: require('./../../assets/images/image4.png'),
+        type: 'ปิ้งย่าง',
+        star: '5.0',
     },
 ]
 
@@ -82,6 +127,27 @@ const HomeScreen = () => {
             borderRadius: 8,
             alignItems: 'center',
         },
+        itemFood: {
+            position: 'relative',
+            margin: 8,
+        },
+        imageFood: {
+            width: 150,
+            height: 150,
+            objectFit: 'cover',
+            borderRadius: 8,
+        },
+        textFoodContainer: {
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)', // เพิ่มพื้นหลังโปร่งแสง
+            paddingHorizontal: 8,
+            paddingVertical: 16,
+            borderRadius: 8,
+            alignItems: 'start',
+        },
     });
 
     return (
@@ -133,8 +199,31 @@ const HomeScreen = () => {
                     showsHorizontalScrollIndicator={false} // ซ่อนสัญลักษณ์การเลื่อนแนวนอน
                 />
             </View>
-            <View style={[styles.container, { marginVertical: 16 }]}>
+            <View style={[styles.container, { marginVertical: 4 }]}>
                 <Text style={[styles.text, {fontSize: 20}]}>แนะนำสำหรับคุณ</Text>
+            </View>
+            <View style={{
+                marginHorizontal: 8
+            }}>
+                <FlatList
+                    data={foodList}
+                    horizontal={true} // กำหนดให้ FlatList แสดงในแนวนอน
+                    renderItem={({ item }) => (
+                        <View style={styles.itemFood}>
+                            <Image source={item.image} style={styles.imageFood}/>
+                            <View style={styles.textFoodContainer}>
+                                <Text style={[styles.text, {color: '#fff', fontSize: 16, fontWeight: 'bold'}]}>{item.title}</Text>
+                                <Text style={[styles.text, {color: 'gray', fontSize: 12}]}>{item.type}</Text>
+                                <Text style={[styles.text, {color: '#fff', fontSize: 12}]}><Ionicons name="star" size={16} color="white" />{item.star}</Text>
+                            </View>
+                        </View>
+                    )}
+                    keyExtractor={item => item.id}
+                    showsHorizontalScrollIndicator={false} // ซ่อนสัญลักษณ์การเลื่อนแนวนอน
+                />
+            </View>
+            <View style={[styles.container, { marginVertical: 4 }]}>
+                <Text style={[styles.text, {fontSize: 20}]}>ร้านอาหารยอดนิยม</Text>
             </View>
         </View>
     );
