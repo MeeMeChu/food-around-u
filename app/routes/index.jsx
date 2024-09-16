@@ -40,7 +40,7 @@ const Routes = () => {
                     }
                 })}
             >
-                <Tab.Screen options={{title: 'หร้าแรก'}} name="Home" component={HomeScreen} />
+                <Tab.Screen options={{title: 'หน้าแรก'}} name="Home" component={HomeScreen} />
                 <Tab.Screen options={{title: 'ร้านอาหาร'}} name="Food" component={AccountScreen} />
                 <Tab.Screen options={{title: 'ที่บันทึกไว้'}} name="Bookmark" component={AccountScreen} />
                 <Tab.Screen options={{title: 'ฉัน'}} name="Account" component={AccountScreen} />

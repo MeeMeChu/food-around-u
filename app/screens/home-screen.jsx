@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { View, StyleSheet, TextInput, FlatList, Image, ScrollView } from "react-native";
+import { View, TextInput, FlatList, Image, ScrollView } from "react-native";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useApp } from "../contexts/AppContext";
 import { Ionicons } from "@expo/vector-icons";
+import createHomeStyles from "./styles/home-style";
 
 const category = [
     {
@@ -36,6 +37,7 @@ const foodList = [
         image: require('./../../assets/images/image2.png'),
         type: 'ปิ้งย่าง',
         star: '5.0',
+        reviews: '1',
     },
     {
         id: '2',
@@ -43,6 +45,7 @@ const foodList = [
         image: require('./../../assets/images/image3.png'),
         type: 'ปิ้งย่าง',
         star: '5.0',
+        reviews: '1',
     },
     {
         id: '3',
@@ -50,6 +53,7 @@ const foodList = [
         image: require('./../../assets/images/image4.png'),
         type: 'ปิ้งย่าง',
         star: '5.0',
+        reviews: '1',
     },
     {
         id: '4',
@@ -57,6 +61,7 @@ const foodList = [
         image: require('./../../assets/images/image4.png'),
         type: 'ปิ้งย่าง',
         star: '5.0',
+        reviews: '1',
     },
     {
         id: '5',
@@ -64,6 +69,7 @@ const foodList = [
         image: require('./../../assets/images/image4.png'),
         type: 'ปิ้งย่าง',
         star: '5.0',
+        reviews: '1',
     },
     {
         id: '6',
@@ -71,6 +77,7 @@ const foodList = [
         image: require('./../../assets/images/image4.png'),
         type: 'ปิ้งย่าง',
         star: '5.0',
+        reviews: '1',
     },
 ]
 
@@ -78,77 +85,7 @@ const HomeScreen = () => {
     const { theme } = useApp();
     const [search, setSearch] = useState("");
 
-    const styles = StyleSheet.create({
-        safeArea: {
-            flex: 1,
-        },
-        container: {
-            marginHorizontal: 16
-        },
-        header: {
-            backgroundColor: theme.colors.primary,
-            paddingHorizontal: 16,
-            flexDirection: 'row',
-        },
-        text: {
-            fontFamily: theme.fonts.regular.fontFamily
-        },
-        inputContainer: {
-            marginTop: 16,  
-            flexDirection: 'row',
-            alignItems: 'center',
-            backgroundColor: '#fff',
-            borderRadius: 8,
-            paddingHorizontal: 8,
-        },
-        icon: {
-            marginRight: 8,
-        },
-        textInput: {
-            paddingVertical: 8,
-        },
-        item: {
-            position: 'relative',
-            margin: 8,
-        },
-        image: {
-            width: 100,
-            height: 160,
-            objectFit: 'cover',
-            borderRadius: 8,
-        },
-        textContainer: {
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // เพิ่มพื้นหลังโปร่งแสง
-            padding: 8,
-            borderRadius: 8,
-            alignItems: 'center',
-        },
-        itemFood: {
-            position: 'relative',
-            margin: 8,
-        },
-        imageFood: {
-            width: 150,
-            height: 150,
-            objectFit: 'cover',
-            borderRadius: 8,
-        },
-        textFoodContainer: {
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)', // เพิ่มพื้นหลังโปร่งแสง
-            paddingHorizontal: 8,
-            paddingVertical: 16,
-            borderRadius: 8,
-            alignItems: 'start',
-        },
-    });
+    const styles = createHomeStyles(theme);
 
     return (
         <View style={styles.safeArea}>
@@ -199,7 +136,7 @@ const HomeScreen = () => {
                     showsHorizontalScrollIndicator={false} // ซ่อนสัญลักษณ์การเลื่อนแนวนอน
                 />
             </View>
-            <View style={[styles.container, { marginVertical: 4 }]}>
+            <View style={styles.container}>
                 <Text style={[styles.text, {fontSize: 20}]}>แนะนำสำหรับคุณ</Text>
             </View>
             <View style={{
@@ -212,9 +149,15 @@ const HomeScreen = () => {
                         <View style={styles.itemFood}>
                             <Image source={item.image} style={styles.imageFood}/>
                             <View style={styles.textFoodContainer}>
-                                <Text style={[styles.text, {color: '#fff', fontSize: 16, fontWeight: 'bold'}]}>{item.title}</Text>
-                                <Text style={[styles.text, {color: 'gray', fontSize: 12}]}>{item.type}</Text>
-                                <Text style={[styles.text, {color: '#fff', fontSize: 12}]}><Ionicons name="star" size={16} color="white" />{item.star}</Text>
+                                <Text style={{fontSize: 16, fontFamily: theme.fonts.medium.fontFamily}}>{item.title}</Text>
+                                <Text style={[styles.text, {fontSize: 12}]}>{item.type}</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+                                    <View style={styles.star}>
+                                        <Ionicons style={{ marginHorizontal: 4 }} name="star" size={14} color="white" />
+                                        <Text style={[styles.text, {marginTop: 1.5 ,color: '#fff', fontSize: 12}]}>{item.star}</Text>
+                                    </View>
+                                    <Text style={[styles.text, { fontSize: 14, marginLeft: 8 }]}>{item.reviews} รีวิว</Text>
+                                </View>
                             </View>
                         </View>
                     )}
@@ -222,8 +165,34 @@ const HomeScreen = () => {
                     showsHorizontalScrollIndicator={false} // ซ่อนสัญลักษณ์การเลื่อนแนวนอน
                 />
             </View>
-            <View style={[styles.container, { marginVertical: 4 }]}>
+            <View style={styles.container}>
                 <Text style={[styles.text, {fontSize: 20}]}>ร้านอาหารยอดนิยม</Text>
+            </View>
+            <View style={{
+                marginHorizontal: 8
+            }}>
+                <FlatList
+                    data={foodList}
+                    horizontal={true}
+                    renderItem={({ item }) => (
+                        <View style={styles.itemFood}>
+                            <Image source={item.image} style={styles.imageFood}/>
+                            <View style={styles.textFoodContainer}>
+                                <Text style={{fontSize: 16, fontFamily: theme.fonts.medium.fontFamily}}>{item.title}</Text>
+                                <Text style={[styles.text, {fontSize: 12}]}>{item.type}</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+                                    <View style={styles.star}>
+                                        <Ionicons style={{ marginHorizontal: 4 }} name="star" size={14} color="white" />
+                                        <Text style={[styles.text, {marginTop: 1.5 ,color: '#fff', fontSize: 12}]}>{item.star}</Text>
+                                    </View>
+                                    <Text style={[styles.text, { fontSize: 14, marginLeft: 8 }]}>{item.reviews} รีวิว</Text>
+                                </View>
+                            </View>
+                        </View>
+                    )}
+                    keyExtractor={item => item.id}
+                    showsHorizontalScrollIndicator={false}
+                />
             </View>
         </View>
     );
