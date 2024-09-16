@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons'; // ใช้ไอคอนจาก Ionicons
 import HomeScreen from '../screens/home-screen';
+import RestaurantScreen from '../screens/restaurant-screen';
 import AccountScreen from '../screens/account-screen';
 import { useApp } from '../contexts/AppContext';
 
@@ -40,8 +41,8 @@ const Routes = () => {
                     }
                 })}
             >
-                <Tab.Screen options={{title: 'หร้าแรก'}} name="Home" component={HomeScreen} />
-                <Tab.Screen options={{title: 'ร้านอาหาร'}} name="Food" component={AccountScreen} />
+                <Tab.Screen options={{title: 'หน้าแรก'}} name="Home" component={HomeScreen} />
+                <Tab.Screen options={{title: 'ร้านอาหาร'}} name="Food" component={RestaurantScreen} />
                 <Tab.Screen options={{title: 'ที่บันทึกไว้'}} name="Bookmark" component={AccountScreen} />
                 <Tab.Screen options={{title: 'ฉัน'}} name="Account" component={AccountScreen} />
             </Tab.Navigator>
