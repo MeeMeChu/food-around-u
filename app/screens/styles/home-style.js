@@ -9,6 +9,7 @@ const createHomeStyles = (theme) => {
             marginHorizontal: 16
         },
         header: {
+            paddingVertical: 8,
             backgroundColor: theme.colors.primary,
             paddingHorizontal: 16,
             flexDirection: 'row',
@@ -36,7 +37,7 @@ const createHomeStyles = (theme) => {
         },
         image: {
             width: 100,
-            height: 160,
+            height: 180,
             objectFit: 'cover',
             borderRadius: 8,
         },

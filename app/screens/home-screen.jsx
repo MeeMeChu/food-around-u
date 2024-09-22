@@ -1,89 +1,52 @@
-import { useState } from "react";
-import { View, TextInput, FlatList, Image, ScrollView, Button, TouchableOpacity } from "react-native";
+import { useEffect, useState } from "react";
+import { View, TextInput, FlatList, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useApp } from "../contexts/AppContext";
 import { Ionicons } from "@expo/vector-icons";
 import createHomeStyles from "./styles/home-style";
-
-const category = [
-    {
-        id: '1',
-        name: "ชาบู",
-        image: require('./../../assets/images/image1.png'),
-    },
-    {   
-        id: '2',
-        name: "ปิ้งย่าง",
-        image: require('./../../assets/images/image2.png'),
-        
-    },
-    {
-        id: '3',
-        name: "อาหารญี่ปุน",
-        image: require('./../../assets/images/image3.png'),
-    },
-    {
-        id: '4',
-        name: "อาหารเกาหลี",
-        image: require('./../../assets/images/image4.png'),
-    },
-]
-
-const foodList = [
-    {
-        id: '1',
-        title: 'เต่าตั้งเตา',
-        image: require('./../../assets/images/image2.png'),
-        type: 'ปิ้งย่าง',
-        star: '5.0',
-        reviews: '1',
-    },
-    {
-        id: '2',
-        title: 'เต่าตั้งเตา',
-        image: require('./../../assets/images/image3.png'),
-        type: 'ปิ้งย่าง',
-        star: '5.0',
-        reviews: '1',
-    },
-    {
-        id: '3',
-        title: 'เต่าตั้งเตา',
-        image: require('./../../assets/images/image4.png'),
-        type: 'ปิ้งย่าง',
-        star: '5.0',
-        reviews: '1',
-    },
-    {
-        id: '4',
-        title: 'เต่าตั้งเตา',
-        image: require('./../../assets/images/image4.png'),
-        type: 'ปิ้งย่าง',
-        star: '5.0',
-        reviews: '1',
-    },
-    {
-        id: '5',
-        title: 'เต่าตั้งเตา',
-        image: require('./../../assets/images/image4.png'),
-        type: 'ปิ้งย่าง',
-        star: '5.0',
-        reviews: '1',
-    },
-    {
-        id: '6',
-        title: 'เต่าตั้งเตา',
-        image: require('./../../assets/images/image4.png'),
-        type: 'ปิ้งย่าง',
-        star: '5.0',
-        reviews: '1',
-    },
-]
+import { db } from "../configs/firebase-config";
+import { collection, getDocs } from "firebase/firestore";
+import dayjs from "dayjs";
 
 const HomeScreen = ({ navigation }) => {
     const { theme } = useApp();
-    const [search, setSearch] = useState("");
+    const [restaurantsList, setRestaurantslist] = useState([]);
+    const [category, setCategory] = useState([]);
+
+    useEffect(() => {
+        const fetchRestaurants = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'restaurants'));
+                const docsData = querySnapshot.docs.map(doc => ({ 
+                    id: doc.id, 
+                    ...doc.data(),
+                    created_at: dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY'),
+                    updated_at: dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY')
+                }));
+                setRestaurantslist(docsData);
+                console.log("Fetched Food: ", docsData);
+            } catch (error) {
+                console.error("Error fetching collection data: ", error);
+            }
+        };
+        const fetchCategories = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'categories'));
+                const docsData = querySnapshot.docs.map(doc => ({ 
+                    id: doc.id, 
+                    ...doc.data(),
+                }));
+                setCategory(docsData);
+                console.log("Fetched categories: ", docsData);
+            } catch (error) {
+                console.error("Error fetching collection data: ", error);
+            }
+        };
+        
+        fetchRestaurants();
+        fetchCategories();
+    }, []);
 
     const styles = createHomeStyles(theme);
 
@@ -107,15 +70,6 @@ const HomeScreen = ({ navigation }) => {
                     >
                         บริเวณมหาวิทยาลัยสงขลานครินทร์ วิทยาเขตหาดใหญ่
                     </Text>
-                    <View style={styles.inputContainer}>
-                        <Ionicons name="search" size={24} color="gray" style={styles.icon}/>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="ค้นหาร้านอาหาร"
-                            value={search}
-                            onChangeText={search => setSearch(search)}
-                        />
-                    </View>
                 </View>
             </SafeAreaView>
             <ScrollView>
@@ -127,7 +81,7 @@ const HomeScreen = ({ navigation }) => {
                         horizontal={true} // กำหนดให้ FlatList แสดงในแนวนอน
                         renderItem={({ item }) => (
                             <View style={styles.item}>
-                                <Image source={item.image} style={styles.image}/>
+                                <Image source={{ uri : item.imageUrl }} style={styles.image}/>
                                 <View style={styles.textContainer}>
                                     <Text style={[styles.text, {color: '#fff', fontSize: 16}]}>{item.name}</Text>
                                 </View>
@@ -144,23 +98,23 @@ const HomeScreen = ({ navigation }) => {
                     marginHorizontal: 8
                 }}>
                     <FlatList
-                        data={foodList}
+                        data={restaurantsList}
                         horizontal={true} // กำหนดให้ FlatList แสดงในแนวนอน
                         renderItem={({ item }) => (
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('RestaurantDetail', { ...item })}
+                                onPress={() => navigation.navigate('RestaurantDetail', item)}
                             >
                                 <View style={styles.itemFood}>
-                                    <Image source={item.image} style={styles.imageFood}/>
+                                    <Image source={{ uri : item.imageUrl }} style={styles.imageFood}/>
                                     <View style={styles.textFoodContainer}>
                                         <Text style={{fontSize: 16, fontFamily: theme.fonts.medium.fontFamily}}>{item.title}</Text>
-                                        <Text style={[styles.text, {fontSize: 12}]}>{item.type}</Text>
+                                        <Text style={[styles.text, {fontSize: 12}]}>{item.tag}</Text>
                                         <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                                             <View style={styles.star}>
                                                 <Ionicons style={{ marginHorizontal: 4 }} name="star" size={14} color="white" />
                                                 <Text style={[styles.text, {marginTop: 1.5 ,color: '#fff', fontSize: 12}]}>{item.star}</Text>
                                             </View>
-                                            <Text style={[styles.text, { fontSize: 14, marginLeft: 8 }]}>{item.reviews} รีวิว</Text>
+                                            <Text style={[styles.text, { fontSize: 14, marginLeft: 8 }]}> รีวิว</Text>
                                         </View>
                                     </View>
                                 </View>
@@ -177,17 +131,17 @@ const HomeScreen = ({ navigation }) => {
                     marginHorizontal: 8
                 }}>
                     <FlatList
-                        data={foodList}
+                        data={restaurantsList}
                         horizontal={true}
                         renderItem={({ item }) => (
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('RestaurantDetail', { ...item })}
+                                onPress={() => navigation.navigate('RestaurantDetail', item)}
                             >
                                 <View style={styles.itemFood}>
-                                    <Image source={item.image} style={styles.imageFood}/>
+                                    <Image source={{ uri : item.imageUrl}} style={styles.imageFood}/>
                                     <View style={styles.textFoodContainer}>
                                         <Text style={{fontSize: 16, fontFamily: theme.fonts.medium.fontFamily}}>{item.title}</Text>
-                                        <Text style={[styles.text, {fontSize: 12}]}>{item.type}</Text>
+                                        <Text style={[styles.text, {fontSize: 12}]}>{item.tag}</Text>
                                         <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                                             <View style={styles.star}>
                                                 <Ionicons style={{ marginHorizontal: 4 }} name="star" size={14} color="white" />

@@ -1,10 +1,11 @@
 {
-    "id" : "1",
-    "title" : "",
-    "views" : 1,
-    "locationURL" : "",
-    "address" : "",
-    "phone" : "",
-    "create_at" : "",
-    "update_at" : ""
+    "id" : "ไม่ต้อง",
+    "title" : "(ชื่อร้าน)",
+    "imageUrl" : "(ลิ้งค์รูปภาพ)",
+    "locationURL" : "(ลิ้ง GoogleMap)",
+    "address" : "(ที่อยู่ร้าน)",
+    "phone" : "(เบอร์โทรร้าน)",
+    "views" : "ไม่ต้อง",
+    "created_at" : "ไม่ต้อง",
+    "updated_at" : "ไม่ต้อง"
 }
