@@ -4,6 +4,7 @@ import Routes from "./app/routes";
 import { AppProvider } from "./app/contexts/AppContext";
 import { ActivityIndicator } from 'react-native-paper';
 import { View } from 'react-native';
+import { AuthProvider } from './app/contexts/AuthContext';
 
 export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -31,9 +32,11 @@ export default function App() {
 
   return (
     <Fragment>
-      <AppProvider>
-        <Routes />
-      </AppProvider>
+      <AuthProvider>
+        <AppProvider>
+          <Routes />
+        </AppProvider>
+      </AuthProvider>
     </Fragment>
   );
 }

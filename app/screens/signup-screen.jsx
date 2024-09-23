@@ -1,22 +1,28 @@
 import { useState } from 'react';
 import { TextInput, View, TouchableOpacity, SafeAreaView } from 'react-native'
 import { Divider, Text } from 'react-native-paper'
-import { useApp } from '../contexts/AppContext';
 import createLoginStyles from './styles/login-style';
-import { Ionicons } from '@expo/vector-icons';
+import { useApp } from '../contexts/AppContext';
+import { useAuth } from '../contexts/AuthContext';
 
 const SignUpScreen = ({ navigation }) => {
+    const auth = useAuth();
+    const { theme } = useApp();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    const { theme } = useApp();
+    const [error, setError] = useState('');
+    
+    const handleRegister = async () => {
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+        setError('');
+        await auth.signUpWithEmail(email, password);
 
-    const handleRegister = () => {
-        console.log('Email : ', email);
-        console.log('Password : ', password);
-        console.log('ConfirmPassword : ', confirmPassword);
-        
+        // เปลี่ยนเส้นทางไปยังหน้าหลังจากลงทะเบียนสำเร็จ
+        navigation.navigate('Main');
     }
 
     const styles = createLoginStyles(theme);
@@ -70,6 +76,7 @@ const SignUpScreen = ({ navigation }) => {
                     />
                 </View>
             </View>
+            {error ? <Text style={styles.errorText}>{error}</Text> : null}
             <TouchableOpacity style={styles.btn} onPress={handleRegister}>
                 <Text style={styles.btnText}>สมัครสมาชิก</Text>
             </TouchableOpacity>

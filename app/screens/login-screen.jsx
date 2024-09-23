@@ -5,15 +5,17 @@ import createLoginStyles from './styles/login-style';
 import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useAuth } from '../contexts/AuthContext';
 
 const LoginScreen = ({ navigation }) => {
+    const auth = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleLogin = () => {
-        console.log('Email : ', email);
-        console.log('Password : ', password);
+    const handleLogin = async () => {
+        await auth.signInWithEmail(email, password);
+        navigation.navigate('Main');
     }
 
     const { theme } = useApp();

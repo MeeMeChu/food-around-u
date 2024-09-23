@@ -65,6 +65,10 @@ const createLoginStyles = (theme) => {
             height: 50,
             justifyContent: 'center',
         },
+        errorText: {
+            color: 'red',
+            margin: 4,
+        },
     });
 }
 
