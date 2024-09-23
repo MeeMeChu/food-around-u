@@ -1,42 +1,36 @@
-import { View, Text, StyleSheet, FlatList, SafeAreaView  } from 'react-native';
+import { View, SafeAreaView, TouchableOpacity, Image  } from 'react-native';
+import { Divider, Text } from 'react-native-paper';
+import { useApp } from '../contexts/AppContext';
+import createAccountStyles from './styles/account-style';
+import { Ionicons } from '@expo/vector-icons';
 
-const DATA = new Array(1000).fill(null).map((_, index) => ({
-    key: `item-${index}`,
-    label: `Item ${index}`,
-}));
 
-const AccountScreen = () => {
+const AccountScreen = ({navigation}) => {
+    const { theme } = useApp();
+    
+    const styles = createAccountStyles(theme);
+
     return (
-        <SafeAreaView>
+        <View>
+            <SafeAreaView style={styles.header}>
+                <View style={styles.safeArea}>
+                    <View style={styles.imageContainer}>
+                        <Image source={require('./../../assets/images/image_account.png')}/>
+                    </View>
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Login')}>
+                        <Text style={styles.btnText}>สมัครสมาชิกหรือเข้าสู่ระบบ</Text>
+                    </TouchableOpacity>
+                </View>
+            </SafeAreaView>
             <View style={styles.container}>
-                <FlatList
-                    data={DATA}
-                    horizontal={true} // กำหนดให้ FlatList แสดงในแนวนอน
-                    renderItem={({ item }) => (
-                        <View style={styles.item}>
-                            <Text>{item.label}</Text>
-                        </View>
-                    )}
-                    keyExtractor={item => item.key}
-                    showsHorizontalScrollIndicator={false} // ซ่อนสัญลักษณ์การเลื่อนแนวนอน
-                />
+                <View style={styles.settingContainer}>
+                    <Ionicons name="settings" size={20} color="black" />
+                    <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>ตั้งค่า</Text>
+                </View>
+                <Divider bold/>
             </View>
-        </SafeAreaView>
+        </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 16,
-    },
-    item: {
-        padding: 16,
-        marginHorizontal: 8,
-        backgroundColor: '#f9c2ff',
-        borderRadius: 8,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
 
 export default AccountScreen

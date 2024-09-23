@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
         colors : {
             ...DefaultTheme.colors,
             primary: '#B10000',
+            secondary: '#FFF0E6'
         },
         fonts: {
             regular: {

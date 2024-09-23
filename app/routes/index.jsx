@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useApp } from '../contexts/AppContext';
 import TabNavigator from './tab-navigator';
 import RestaurantDetail from '../screens/restaurant-detail-screen';
+import LoginScreen from '../screens/login-screen';
+import SignUpScreen from '../screens/signup-screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,12 @@ const Routes = () => {
                         backgroundColor: theme.colors.primary
                     },
                     headerTintColor: '#fff',
+                }}/>
+                <Stack.Screen name="Login" component={LoginScreen} options={{
+                    headerShown: false
+                }}/>
+                <Stack.Screen name="SignUp" component={SignUpScreen} options={{
+                    headerShown: false
                 }}/>
             </Stack.Navigator>
         </NavigationContainer>

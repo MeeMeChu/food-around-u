@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { View, TextInput, FlatList, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, FlatList, Image, ScrollView, TouchableOpacity } from "react-native";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useApp } from "../contexts/AppContext";
 import { Ionicons } from "@expo/vector-icons";
+import { useApp } from "../contexts/AppContext";
 import createHomeStyles from "./styles/home-style";
 import { db } from "../configs/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
