@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { View, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from "react-native";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -49,9 +49,9 @@ const foodMenu = [
 ];
 
 const RestaurantScreen = () => {
-  const { theme } = useApp();
+  const { theme, bookmarkedRestaurants, toggleBookmark } = useApp(); // Access toggleBookmark
   const [search, setSearch] = useState("");
-  
+
   const styles = StyleSheet.create({
     safeArea: {
       flex: 1,
@@ -104,6 +104,7 @@ const RestaurantScreen = () => {
       padding: 8,
       borderRadius: 8,
     },
+    
   });
 
   return (
@@ -131,7 +132,7 @@ const RestaurantScreen = () => {
           เลือกร้านอาหารสำหรับคุณ
         </Text>
         <FlatList
-          data={foodMenu} 
+          data={foodMenu}
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
               <Image source={item.image} style={styles.image} />
@@ -144,8 +145,15 @@ const RestaurantScreen = () => {
                   <Text style={[styles.text, { fontSize: 14, color: 'gray', marginLeft: 8 }]}>{item.reviews} รีวิว</Text>
                 </View>
               </View>
-              <TouchableOpacity style={{ marginRight: 8 }}>
-                <Ionicons name="bookmark-outline" size={24} color={theme.colors.primary} />
+              <TouchableOpacity 
+                style={{ marginRight: 8 }} 
+                onPress={() => toggleBookmark(item.id)} // Use the toggleBookmark function
+              >
+                <Ionicons 
+                  name={bookmarkedRestaurants.includes(item.id) ? "bookmark" : "bookmark-outline"} 
+                  size={24} 
+                  color={theme.colors.primary} 
+                />
               </TouchableOpacity>
             </View>
           )}
@@ -157,5 +165,4 @@ const RestaurantScreen = () => {
   );
 };
 
-
-export default RestaurantScreen
+export default RestaurantScreen;

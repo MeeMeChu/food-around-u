@@ -7,6 +7,7 @@ import HomeScreen from '../screens/home-screen';
 import RestaurantScreen from '../screens/restaurant-screen';
 import AccountScreen from '../screens/account-screen';
 import { useApp } from '../contexts/AppContext';
+import BookmarkScreen from '../screens/bookmark-screen';
 
 const Tab = createBottomTabNavigator();
 
@@ -43,7 +44,7 @@ const Routes = () => {
             >
                 <Tab.Screen options={{title: 'หน้าแรก'}} name="Home" component={HomeScreen} />
                 <Tab.Screen options={{title: 'ร้านอาหาร'}} name="Food" component={RestaurantScreen} />
-                <Tab.Screen options={{title: 'ที่บันทึกไว้'}} name="Bookmark" component={AccountScreen} />
+                <Tab.Screen options={{title: 'ที่บันทึกไว้'}} name="Bookmark" component={BookmarkScreen} />
                 <Tab.Screen options={{title: 'ฉัน'}} name="Account" component={AccountScreen} />
             </Tab.Navigator>
         </NavigationContainer>
