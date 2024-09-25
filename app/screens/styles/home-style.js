@@ -66,7 +66,7 @@ const createHomeStyles = (theme) => {
             bottom: 0,
             left: 0,
             right: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.5)', // เพิ่มพื้นหลังโปร่งแสง
+            backgroundColor: 'rgba(255, 255, 255, 0.7)', // เพิ่มพื้นหลังโปร่งแสง
             paddingHorizontal: 8,
             paddingVertical: 4,
             borderRadius: 8,

@@ -4,6 +4,8 @@ import HomeScreen from '../screens/home-screen';
 import AccountScreen from '../screens/account-screen';
 import { useApp } from '../contexts/AppContext';
 import { Ionicons } from '@expo/vector-icons';
+import RestaurantScreen from '../screens/restaurant-screen';
+import AddRestaurants from '../screens/scripts';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +21,7 @@ const TabNavigator = () => {
 
                     if (route.name === 'Home') {
                         iconName = focused ? 'home' : 'home-outline';
-                    } else if (route.name === 'Food') {
+                    } else if (route.name === 'Restaurant') {
                         iconName = focused ? 'fast-food' : 'fast-food-outline';
                     } else if (route.name === 'Bookmark') {
                         iconName = focused ? 'bookmarks' : 'bookmarks-outline';
@@ -36,8 +38,8 @@ const TabNavigator = () => {
             })}
         >
             <Tab.Screen options={{ title: 'หน้าแรก' }} name="Home" component={HomeScreen} />
-            <Tab.Screen options={{ title: 'ร้านอาหาร' }} name="Food" component={AccountScreen} />
-            <Tab.Screen options={{ title: 'ที่บันทึกไว้' }} name="Bookmark" component={AccountScreen} />
+            <Tab.Screen options={{ title: 'ร้านอาหาร' }} name="Restaurant" component={RestaurantScreen} />
+            <Tab.Screen options={{ title: 'ที่บันทึกไว้' }} name="Bookmark" component={AddRestaurants} />
             <Tab.Screen options={{ title: 'ฉัน' }} name="Account" component={AccountScreen} />
         </Tab.Navigator>
     );

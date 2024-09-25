@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
             },
             h1: {
                 fontFamily: 'NotoSansThai-Regular',
-                fontSize: 20,
+                fontSize: 22,
             },
         },
     };

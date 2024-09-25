@@ -1,11 +1,529 @@
 {
-    "id" : "ไม่ต้อง",
-    "title" : "(ชื่อร้าน)",
-    "imageUrl" : "(ลิ้งค์รูปภาพ)",
-    "locationURL" : "(ลิ้ง GoogleMap)",
-    "address" : "(ที่อยู่ร้าน)",
-    "phone" : "(เบอร์โทรร้าน)",
-    "views" : "ไม่ต้อง",
-    "created_at" : "ไม่ต้อง",
-    "updated_at" : "ไม่ต้อง"
+    "restaurants": {
+        "buffet": [
+            {
+                "id": "ไม่ต้อง",
+                "title": "ตอนตอนสุกี้",
+                "imageUrl": "http://gg.gg/1c7puf",
+                "locationURL": "https://maps.app.goo.gl/M98DKtNpf2ctpdBD7",
+                "address": "113 1 ถนน ถ. สามชัย ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "064 230 8216",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ติดมันส์ หาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7pu9",
+                "locationURL": "https://maps.app.goo.gl/hZHB9vrVCLopQcDG9",
+                "address": "35 37 ถ. สามชัย ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0816903412",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "Shabu Haven Hatyai - ชาบูเฮเว่น หาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7pv0",
+                "locationURL": "https://maps.app.goo.gl/AoGCnJr7Do5gqv7LA",
+                "address": "53/5 ถนน ประชารักษ์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0623453623",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "บูตะ ชาบู หาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7pv7",
+                "locationURL": "https://maps.app.goo.gl/cskBFoUBQQLgHWMm6",
+                "address": "626 ถนน ปุณณกัณฑ์ ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0950928530",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านบุฟเฟ่ต์ริมน้ำ กะทะร้อน",
+                "imageUrl": "http://gg.gg/1c7pvr",
+                "locationURL": "https://maps.app.goo.gl/4Ym1m2NfK81pQvfN6",
+                "address": "399 ถนน ราษฎร์อุทิศ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0842500460",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "สุกี้จินดา สาขาหาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7pvy",
+                "locationURL": "https://maps.app.goo.gl/cJzyGuYT5SUzADRU6",
+                "address": "29, 18 ถนน ศรีภูวนารถ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0622426447",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "E-ฟราย ชาบูชาบู",
+                "imageUrl": "http://gg.gg/1c7pwc",
+                "locationURL": "https://maps.app.goo.gl/ZKoH9zbV9b2SWyh27",
+                "address": "86 1 ถนน นิพัทธ์สงเคราะห์ 4 ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0842692929",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "หมูกระทะแป๊ะยิ้ม BBQ & Hotpot",
+                "imageUrl": "http://gg.gg/1c7pwp",
+                "locationURL": "https://maps.app.goo.gl/1716pwp9Kjz7K1Ez7",
+                "address": "144 9 ถนน ประชาธิปัตย์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0620516405",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "เหยี่ยนสุกี้หม้อไฟ",
+                "imageUrl": "http://gg.gg/1c7pxj",
+                "locationURL": "https://maps.app.goo.gl/PK6jEVQ9sYwqDhJm6",
+                "address": "107/3 ถนน ศรีภูวนารถ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0648517688",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "แมนดารินสุกี้ ติ่มซำ ฮาลาลบุฟเฟ่ต์ หาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7pyz",
+                "locationURL": "https://maps.app.goo.gl/EWQPMRYWAdtzuTfL8",
+                "address": "302, 18 รัถการ ซอย 7/3 อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0866963231",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "พริกขี้หนู หมูกระทะ",
+                "imageUrl": "http://gg.gg/1c7pzd",
+                "locationURL": "https://maps.app.goo.gl/ae2FKUCxJ6WHSDNF9",
+                "address": "81/1 ถนนไทยอาคาร ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0985859864",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "Madam shabu บุฟเฟต์ หาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7pzw",
+                "locationURL": "https://maps.app.goo.gl/prePV126uiSrzV2f6",
+                "address": "340 ถ. ธรรมนูญวิถี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0937202646",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ไอย๊ะชาบู",
+                "imageUrl": "http://gg.gg/1c7q0n",
+                "locationURL": "https://maps.app.goo.gl/tHPFq8DwrbY6xkfU9",
+                "address": "174 ถ. สามชัย ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0615425242",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "เรือนเพชรหมูกระทะ",
+                "imageUrl": "http://gg.gg/1c7q16",
+                "locationURL": "https://maps.app.goo.gl/FsJWF2CgL4ypcusj7",
+                "address": "ถนน ศรีภูวนารทใน ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0959768102",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            }
+        ],
+        "noodles": [
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านเตี๋ยวมามา 4 (ฮาลาลฟู๊ดส์)",
+                "imageUrl": "http://gg.gg/1c7q1e",
+                "locationURL": "https://maps.app.goo.gl/3GArEY6MHGVTd39h9",
+                "address": "108 ถนน ปุณณกัณฑ์ ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "096 306 0063",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ก๋วยเตียวเรือหลานตาเพียร",
+                "imageUrl": "http://gg.gg/1c7q1m",
+                "locationURL": "https://maps.app.goo.gl/4ySVH61bX4R1FUSP8",
+                "address": "Central Festival Hatyai ชั้น G, Hat Yai, Thailand, Songkhla",
+                "phone": "089 921 2837",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ก๋วยเตี๋ยวเรือโกยุทธหาดใหญ่ สาขาปุณณกัณฑ์",
+                "imageUrl": "http://gg.gg/1c7q2d",
+                "locationURL": "https://maps.app.goo.gl/g7UPigYMGAiEcF17A",
+                "address": "252 ถนน ปุณณกัณฑ์ ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0910459042",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านก๋วยเตี๋ยว2พี่น้อง",
+                "imageUrl": "http://gg.gg/1c7q2p",
+                "locationURL": "https://maps.app.goo.gl/stXYsyR4RKTPasH28",
+                "address": "448 ถนน ศุภสารรังสรรค์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0819097024",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ถนัดศรี (since 1969) สาขา ม.อ. หาดใหญ่",
+                "imageUrl": "http://gg.gg/1c7q3i",
+                "locationURL": "https://maps.app.goo.gl/RQNrZLq3mpzTAqFy7",
+                "address": "560 ถ. ธรรมนูญวิถี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0924051969",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ช.โคล ก๋วยเตี๋ยวเรือเนื้อตุ๋น หมูตุ๋น",
+                "imageUrl": "http://gg.gg/1c7q3s",
+                "locationURL": "https://maps.app.goo.gl/c3ftzgEwfnhKJmDd9",
+                "address": "715 4 ถ. ประชาธิปัตย์ ต.หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0648975420",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ก๋วยเตี๋ยวต้มยำหมูระเบิด สาขา2 ข้างกรุงไทย ปุณณกัณฑ์",
+                "imageUrl": "http://gg.gg/1c7q48",
+                "locationURL": "https://maps.app.goo.gl/Z1ykqz4chfZLuoTD9",
+                "address": "240 ถนน ปุณณกัณฑ์ ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0842509693",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านก๋วยเตี๋ยวต้มยำไข่โต(อิสลาม)",
+                "imageUrl": "http://gg.gg/1c7q50",
+                "locationURL": "https://maps.app.goo.gl/CUiJe8yNiUiuPSJP6",
+                "address": "ถนน ละม้ายสงเคราะห์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0647907882",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "โกดอน ก๋วยเตี๋ยวหมูต้มยำ",
+                "imageUrl": "http://gg.gg/1c7q62",
+                "locationURL": "https://maps.app.goo.gl/cdYqCpkaLAKSQQ2A9",
+                "address": "ถนน ราษฎร์ยินดี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0815419569",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ก๋วยเตี๋ยวเรือเฉินหลง",
+                "imageUrl": "http://gg.gg/1c7q7q",
+                "locationURL": "https://maps.app.goo.gl/hChjDrR4Q4t9W1Bw9",
+                "address": "87 ถนน ละม้ายสงเคราะห์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0937209915",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ก๋วยเตี๋ยวเฮียเปา",
+                "imageUrl": "http://gg.gg/1c7q7x",
+                "locationURL": "https://maps.app.goo.gl/ajAxSHhAGHfeoEL9A",
+                "address": "26 ถนน คลองเรียน 1 ซอย 1 ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0626893665",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านก๋วยเตี๋ยวหางหมู สามชัย สาขา 2",
+                "imageUrl": "http://gg.gg/1c7q88",
+                "locationURL": "https://maps.app.goo.gl/agjYk3tobHVYasZv8",
+                "address": "เลขที่ 117 ถนน คลองเรียน 1 ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0824396017",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "หญิงเล็ก ก๋วยเตี๋ยวหมูตุ๋น สามชัย",
+                "imageUrl": "http://gg.gg/1c7q90",
+                "locationURL": "https://maps.app.goo.gl/5Eg7WEDnJmrDz4fb9",
+                "address": "1, 13 ซอย บุญราช ตำบล หาดใหญ่ Hatyai, สงขลา 90110",
+                "phone": "0826525956",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            }
+        ],
+        "made_to_order": [
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านป้าส้ม อาหารตามสั่ง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2018/10/31/610e64cff4a940f6882f5026fffd45b8.jpg",
+                "locationURL": "https://maps.app.goo.gl/c2f6nhqg3oK9Wbi17",
+                "address": "210 ถนน โชติวิทยะกุล 5 ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0888319413",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านอาหารตามสั่งน้องดีเซล",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2021/05/28/0122b29c01484b6c8c179e586244dfa3.jpg",
+                "locationURL": "https://maps.app.goo.gl/rS72iwdzFP6jh2tU9",
+                "address": "151 ถนน ทุ่งรี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0628827087",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ตุ๊กตุ๊ก อาหารตามสั่ง",
+                "imageUrl": "https://images.deliveryhero.io/image/fd-th/LH/c9lv-listing.JPG",
+                "locationURL": "https://maps.app.goo.gl/QM7iez1NXU8EE9Pq5",
+                "address": "67 ถนน ราษฎร์อุทิศ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "074253221",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "น้องมายร์ อาหารตามสั่ง",
+                "imageUrl": "https://images.deliveryhero.io/image/fd-th/LH/h7kz-listing.JPG",
+                "locationURL": "https://maps.app.goo.gl/K8jBZtd9iK3YHiyP9",
+                "address": "2 ซอย 6 บ้านทุ่งรี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0895996208",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านอาหารตามสั่ง 24/25 (ฮาลาล) 24 ชั่วโมง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2021/01/14/9462a37e4b0445a594711ac2a517fbba.jpg",
+                "locationURL": "https://maps.app.goo.gl/AG1CiWWCsPJdVT7Y9",
+                "address": "3 ถนน ศรีภูวนารถ ตำบล ควนลัง อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0973538096",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้าน หญิง หญิง อาหารตามสั่ง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2020/12/30/79145c4d61e545aba7295a1f4f81460c.jpg",
+                "locationURL": "https://maps.app.goo.gl/WcWEdXSZptJApoLW9",
+                "address": "ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0983344810",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านพี่พรลุงเล็กอาหารตามสั่ง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2022/08/25/e2559905431e4f8891fbc82235d28003.jpg",
+                "locationURL": "https://maps.app.goo.gl/3E7GithSms1K6EL8A",
+                "address": "ติดกับ toyota พิธาน ถนน ลพบุรีราเมศวร์ คลองแห อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0620614719",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านอาหารตามสั่งพี่ภา",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2018/10/31/610e64cff4a940f6882f5026fffd45b8.jpg",
+                "locationURL": "https://maps.app.goo.gl/BXcackzUyf7S8r9fA",
+                "address": "ถ. ประชายินดี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0805494291",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ตั๊กม้อ ข้าวต้ม อาหารตามสั่ง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2017/03/06/480ee133d4554979baf4557f885ddcfa.jpg",
+                "locationURL": "https://maps.app.goo.gl/uL5tbX3R3YV7LBXa6",
+                "address": "ซอย ยายเห้งอุทิศ ตำบล คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0986716077",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านพี่รัตน์อาหารตามสั่ง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2019/11/19/cfc354213b2a424c9a1268aa8429ba67.jpg",
+                "locationURL": "https://maps.app.goo.gl/ohWjiR4xY5kFKp8R7",
+                "address": "217 ถ. ประชายินดี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0895957433",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            }
+        ],
+        "desserts": [
+            {
+                "id": "ไม่ต้อง",
+                "title": "บัวลอยซอย 9",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2023/09/20/e7fc3f96f4c045d997eb95e20a12f022.jpg",
+                "locationURL": "https://maps.app.goo.gl/uw9uQNP9CPr16mHQ9",
+                "address": "บัวลอยซอย 9 เลขที่ 117 อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0960032842",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "หัวกะทิ รวมมิตรน้ำแข็งใส",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2023/04/13/f473f8f75a514fffb00a4dff38c6e674.jpg",
+                "locationURL": "https://maps.app.goo.gl/1PjRX41oTDesoUV18",
+                "address": "292 ถ. สามชัย ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0826599982",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ทับทิมกรอบพี่แดง หาดใหญ่",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2023/09/28/a0b47c6dd51045fa93154acd445d0d22.jpg",
+                "locationURL": "https://maps.app.goo.gl/FrhFVZvnDX5BrPw9A",
+                "address": "58 7 ถนน ละม้ายสงเคราะห์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0858916955",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ขนมแม่ สาขา ม.สงขลานครินทร์",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2023/06/23/5a87448aafd14f4daab08a22ba00e982.jpg",
+                "locationURL": "https://maps.app.goo.gl/LBDHqf8m4wFm1U496",
+                "address": "ร้านขนมแม่ คอหงส์ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0928499865",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ร้านคุณอ้น ร.ศ.๒๑๙ ต้นตำรับบัวลอยไข่หวานเมืองเพชรบุรี",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2016/09/05/47470ceb0cdc4a7ab530027ff41fcc02.jpg",
+                "locationURL": "https://maps.app.goo.gl/LXhzKRt8U1Sx1TGe7",
+                "address": "177 ถ. ธรรมนูญวิถี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0896555558",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ชีวิตชีวา หาดใหญ",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2021/03/01/49befcf826dc4911895de04a5fd4dc61.jpg",
+                "locationURL": "https://maps.app.goo.gl/5EtpWCjNmi1Z5QER9",
+                "address": "43/22 ราษฎร์ยินดี ซอย 6/1 ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0831688889",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "เช็งซิมอี๊ สาขาหาดใหญ่",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2024/05/25/d4f9271c96d548b3b65a42df771f9c14.jpg",
+                "locationURL": "https://maps.app.goo.gl/VzkdoU5yZtWSkPYo6",
+                "address": "172 ถ. ธรรมนูญวิถี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0940788929",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "เต้าทึง เจ๊นก",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2016/04/06/54fa971c7a084d5d89f101bb34a1ad9d.jpg",
+                "locationURL": "https://maps.app.goo.gl/aCVskb8La47XyzC49",
+                "address": "12 ราษฎร์ยินดี ซอย 1 ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0812764659",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "“บัวลอย by จงเจริญ สาขาหาดใหญ่",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2022/12/01/b6463ee60c39481e8d11db83b2f52db0.jpg",
+                "locationURL": "https://maps.app.goo.gl/ZNwBA4SkFejHpBgh6",
+                "address": "43, 24 ถนน ศรีผดุงวิถี ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0961192269",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            },
+            {
+                "id": "ไม่ต้อง",
+                "title": "ไอซ์ สวีท สาขาหาดใหญ่ - ขนมหวาน ไอติม ขนมปัง",
+                "imageUrl": "https://img.wongnai.com/p/1920x0/2022/07/31/5dc14b3ed43041f3b7f7a40e2bd60da9.jpg",
+                "locationURL": "https://maps.app.goo.gl/fc2BHSrQXM9MRzE26",
+                "address": "166 ถนน ดวงจันทร์ ตำบล หาดใหญ่ อำเภอหาดใหญ่ สงขลา 90110",
+                "phone": "0655855625",
+                "views": "ไม่ต้อง",
+                "created_at": "ไม่ต้อง",
+                "updated_at": "ไม่ต้อง"
+            }
+        ]
+    }
 }
