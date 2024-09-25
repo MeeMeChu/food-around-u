@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Image, TouchableOpacity, ScrollView, Linking } from 'react-native'
 import createRestDetailStyles from './styles/restaurant-detail-style'
 import { useApp } from '../contexts/AppContext';
 import { ActivityIndicator, Divider, Text } from 'react-native-paper';
@@ -9,6 +9,10 @@ const RestaurantDetail = ({ route }) => {
     const { theme } = useApp();
     const data = route.params;
     const [bookMark, setBookMark] = useState(false);
+
+    const openLink = () => {
+        Linking.openURL(data.locationURL).catch(err => console.error("Couldn't load page", err));
+    };
 
     const styles = createRestDetailStyles(theme);
 
@@ -42,9 +46,9 @@ const RestaurantDetail = ({ route }) => {
                         )}
                     </View>
                 </View>
-                <View>
+                <TouchableOpacity onPress={openLink}>
                     <Image style={styles.map} source={require('./../../assets/images/image_map.png')}/>
-                </View>
+                </TouchableOpacity>
                 <View>
                     <Text style={[styles.text, { marginVertical: 16 }]}>{data.address}</Text>
                     <Divider bold/>

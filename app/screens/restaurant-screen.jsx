@@ -21,14 +21,13 @@ import { db } from '../configs/firebase-config';
 const RestaurantScreen = ({ navigation }) => {
 
     const { theme } = useApp();
-    const [search, setSearch] = useState('');
     const [refreshing, setRefreshing] = useState(false);
     const [restaurantsList ,setRestaurantslist] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('บุฟเฟต์'); // เก็บหมวดหมู่ที่เลือก
+    const [selectedCategory, setSelectedCategory] = useState('All'); // เก็บหมวดหมู่ที่เลือก
 
-    const categories = ['บุฟเฟต์', 'ก๋วยเตี๋ยว', 'ของหวาน', 'อาหารตามสั่ง'];
+    const categories = ['All','บุฟเฟต์', 'ก๋วยเตี๋ยว', 'ของหวาน', 'อาหารตามสั่ง'];
 
-    const filteredRestaurants = selectedCategory === 'บุฟเฟต์' || selectedCategory === ''
+    const filteredRestaurants = selectedCategory === 'All' || selectedCategory === ''
         ? restaurantsList
         : restaurantsList.filter(item => item.category === selectedCategory); // กรองตาม category
 
@@ -76,40 +75,35 @@ const RestaurantScreen = ({ navigation }) => {
                     >
                         รายการร้านอาหาร
                     </Text>
-                    <View style={styles.inputContainer}>
-                        <Ionicons name="search" size={24} color="gray" style={styles.icon} />
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder="ค้นหาร้านอาหาร"
-                            value={search}
-                            onChangeText={(text) => setSearch(text)}
-                        />
-                    </View>
+                    <ScrollView 
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                    >
+                        {categories.map((category, index) => (
+                            <TouchableOpacity 
+                                key={index}
+                                onPress={() => setSelectedCategory(category)}
+                                style={{
+                                    backgroundColor: selectedCategory === category ? theme.colors.secondary : '#ffff',
+                                    padding: 8,
+                                    borderRadius: 8,
+                                    marginRight: 8,
+                                    marginVertical: 8
+                                }}
+                            >
+                                <Text style={{ color: selectedCategory === category ? theme.colors.primary : '#333', fontSize: 14 }}>{category}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </ScrollView>
                 </View>
             </SafeAreaView>
 
 
             <View style={[styles.container, { marginTop: 8}]}>
-                <Text style={[styles.text, { fontSize: 20, fontWeight: 'bold', marginBottom: 8 }]}>
+                <Text style={[styles.text, { fontSize: 20 }]}>
                     เลือกร้านอาหารสำหรับคุณ
                 </Text>
-                <ScrollView horizontal={true}>
-                    {categories.map((category, index) => (
-                        <TouchableOpacity 
-                            key={index}
-                            onPress={() => setSelectedCategory(category)}
-                            style={{
-                                backgroundColor: selectedCategory === category ? theme.colors.primary : 'gray',
-                                padding: 8,
-                                borderRadius: 8,
-                                marginRight: 4,
-                                marginVertical: 8
-                            }}
-                        >
-                            <Text style={{ color: selectedCategory === category ? '#fff' : '#333', fontSize: 14 }}>{category}</Text>
-                        </TouchableOpacity>
-                    ))}
-                </ScrollView>
+                
                 <FlatList
                     data={filteredRestaurants}
                     renderItem={({ item }) => (
@@ -153,7 +147,7 @@ const RestaurantScreen = ({ navigation }) => {
                     )}
                     keyExtractor={(item) => item.id}
                     showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{ paddingBottom: 256 }} // เพิ่ม padding ให้กับ FlatList
+                    contentContainerStyle={{ paddingBottom: 300 }} // เพิ่ม padding ให้กับ FlatList
                     refreshControl={
                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} /> // เพิ่ม refresh control
                     }
