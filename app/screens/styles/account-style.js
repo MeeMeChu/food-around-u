@@ -19,7 +19,7 @@ const createAccountStyles = (theme) => {
         },
         textWelcome: {
             fontFamily: theme.fonts.medium.fontFamily,
-            fontSize: 24,
+            fontSize: 22,
             color: '#FFEB3B'
         },
         btn: {

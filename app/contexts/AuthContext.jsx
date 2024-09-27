@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../configs/firebase-config";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { auth, db } from "../configs/firebase-config";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext(null);
 
@@ -14,6 +15,7 @@ export const AuthProvider = ({ children }) => {
     const [ loading, setLoading ] = useState(true);
 
     console.log("Login แล้วหรือยัง : ", userLoggedIn);
+    console.log("User : ", currentUser);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -33,19 +35,22 @@ export const AuthProvider = ({ children }) => {
 
     const signUpWithEmail = async (email, password, displayName) => {
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            // const user = result.user;
+            const result = await createUserWithEmailAndPassword(auth, email, password);
+            const user = result.user;
 
-            // const userData = {
-            //     uid: user.uid,
-            //     displayName: displayName,
-            //     email: user.email,
-            // }
+            await updateProfile(user, {
+                displayName: displayName,
+            });
 
-            // await setDoc(doc(db, 'users', user.uid), userData);
+            await setDoc(doc(db, 'users', user.uid), {
+                uid: user.uid,
+                displayName: displayName,
+                email: user.email,
+            });
 
         } catch (error) {
-            console.error("Error during email registration:", error);
+            // console.error("Error during email registration:", error);
+            throw new Error("Error during email registration: " + error.message);
         }
     }
 
@@ -53,7 +58,8 @@ export const AuthProvider = ({ children }) => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
         } catch (error) {
-            console.error("Error during email sign-in:", error);
+            // console.error("Error during email sign-in:", error);
+            throw new Error("Error during  email sign-in", error);
         }
     };
 

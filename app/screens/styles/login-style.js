@@ -21,7 +21,7 @@ const createLoginStyles = (theme) => {
             margin : 4
         },
         btn: {
-            marginTop: 24,
+            marginTop: 16,
             paddingVertical: 8,
             borderRadius: 8,
             backgroundColor: theme.colors.primary

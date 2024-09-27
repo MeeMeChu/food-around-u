@@ -15,19 +15,19 @@ const AccountScreen = ({navigation}) => {
     return (
         <View>
             <SafeAreaView style={styles.header}>
-                {auth.userLoggedIn ? (
-                    // ยังไม่ Login
+                {auth?.userLoggedIn ? (
+                    // Login แล้ว
                     <View style={styles.safeArea}>
                         <View style={styles.container}>
-                            <Text style={styles.textWelcome}>Welcome, {auth.currentUser.email}</Text>
-                            <Text></Text>
+                            <Text style={styles.textWelcome}>ยินดีต้อนรับ, {auth?.currentUser?.displayName}</Text>
+                        
                         </View>
                         <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Login')}>
-                            <Text style={styles.btnText}>สมัครสมาชิกหรือเข้าสู่ระบบ</Text>
+                            <Text style={styles.btnText}>ดูโปรไฟล์ของฉัน</Text>
                         </TouchableOpacity>
                     </View>
                 ) : (
-                    // Login แล้ว
+                    // ยังไม่ได้ login
                     <View style={styles.safeArea}>
                         <View style={styles.imageContainer}>
                             <Image source={require('./../../assets/images/image_account.png')}/>
@@ -44,6 +44,16 @@ const AccountScreen = ({navigation}) => {
                     <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>ตั้งค่า</Text>
                 </View>
                 <Divider bold/>
+                {auth?.userLoggedIn ? (
+                    <View style={styles.settingContainer}>
+                        <Ionicons name="log-out" size={24} color={theme.colors.primary} />
+                        <TouchableOpacity onPress={() => auth.logout()}>
+                            <Text style={[styles.text, { marginLeft: 4 , fontSize: 18, color: theme.colors.primary }]}>ออกจากระบบ</Text>
+                        </TouchableOpacity>
+                    </View>
+                ) : (
+                    null
+                )}
             </View>
         </View>
     );

@@ -51,7 +51,6 @@ const SignUpScreen = ({ navigation }) => {
             setError('Email ของคุณมีคนใช้งานอยู่แล้ว')
         }
 
-        // เปลี่ยนเส้นทางไปยังหน้าหลังจากลงทะเบียนสำเร็จ
     }
 
     const styles = createLoginStyles(theme);
@@ -125,7 +124,7 @@ const SignUpScreen = ({ navigation }) => {
                         </View>
                     </View>
                     {error ? (
-                        <View style={{ marginTop: 8}}>
+                        <View style={{ marginTop: 16}}>
                             <AlertMessage error={error}/>
                         </View>
                     ) : null}

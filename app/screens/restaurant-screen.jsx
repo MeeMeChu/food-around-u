@@ -28,9 +28,10 @@ const RestaurantScreen = ({ navigation }) => {
 
     const categories = ['All','บุฟเฟต์', 'ก๋วยเตี๋ยว', 'ของหวาน', 'อาหารตามสั่ง'];
 
-    const filteredRestaurants = selectedCategory === 'All' || selectedCategory === ''
-        ? restaurantsList
-        : restaurantsList.filter(item => item.category === selectedCategory); // กรองตาม category
+    const filteredRestaurants = restaurantsList.filter(item =>
+        (selectedCategory === 'All' || item.category === selectedCategory) &&
+        item.title.toLowerCase().includes(search.toLowerCase())
+    );
 
     const fetchRestaurants = async () => {
         try {

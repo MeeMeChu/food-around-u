@@ -6,16 +6,41 @@ import { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../contexts/AuthContext';
+import AlertMessage from './components/alert-message';
 
 const LoginScreen = ({ navigation }) => {
     const auth = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
+    const isValidEmail = (email) => {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    };
+
     const handleLogin = async () => {
-        await auth.signInWithEmail(email, password);
-        navigation.navigate('Main');
+
+        if (!email || !password) {
+            setError('กรุณากรอกอีเมลและรหัสผ่าน');
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            setError("กรุณากรอกอีเมลที่ถูกต้อง");
+            return;
+        }
+
+        setError('');
+
+        try {
+            await auth.signInWithEmail(email, password);
+
+            navigation.navigate('Main');
+        } catch (e) {
+            setError('Email หรือ Password ผิดพลาด');
+        }
     }
 
     const { theme } = useApp();
@@ -67,6 +92,11 @@ const LoginScreen = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </View>
+                    {error ? (
+                        <View style={{ marginTop: 16}}>
+                            <AlertMessage error={error}/>
+                        </View>
+                    ) : null}
                     <TouchableOpacity style={styles.btn} onPress={handleLogin}>
                         <Text style={styles.btnText}>Login</Text>
                     </TouchableOpacity>
