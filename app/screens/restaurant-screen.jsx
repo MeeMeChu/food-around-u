@@ -22,6 +22,7 @@ const RestaurantScreen = ({ navigation }) => {
 
     const { theme } = useApp();
     const [refreshing, setRefreshing] = useState(false);
+    const [search, setSearch] = useState('');
     const [restaurantsList ,setRestaurantslist] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All'); // เก็บหมวดหมู่ที่เลือก
 
@@ -37,8 +38,8 @@ const RestaurantScreen = ({ navigation }) => {
             const docsData = querySnapshot.docs.map(doc => ({ 
                 id: doc.id, 
                 ...doc.data(),
-                created_at: doc.created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
-                updated_at: doc.updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
+                created_at: doc.data().created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
+                updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
             }));
             setRestaurantslist(docsData);
             console.log("Fetched Food: ", docsData);
@@ -75,26 +76,15 @@ const RestaurantScreen = ({ navigation }) => {
                     >
                         รายการร้านอาหาร
                     </Text>
-                    <ScrollView 
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={false}
-                    >
-                        {categories.map((category, index) => (
-                            <TouchableOpacity 
-                                key={index}
-                                onPress={() => setSelectedCategory(category)}
-                                style={{
-                                    backgroundColor: selectedCategory === category ? theme.colors.secondary : '#ffff',
-                                    padding: 8,
-                                    borderRadius: 8,
-                                    marginRight: 8,
-                                    marginVertical: 8
-                                }}
-                            >
-                                <Text style={{ color: selectedCategory === category ? theme.colors.primary : '#333', fontSize: 14 }}>{category}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </ScrollView>
+                    <View style={styles.inputContainer}>
+                        <Ionicons name="search" size={24} color="gray" style={styles.icon} />
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder="ค้นหาร้านอาหาร"
+                            value={search}
+                            onChangeText={(text) => setSearch(text)}
+                        />
+                    </View>
                 </View>
             </SafeAreaView>
 
@@ -104,6 +94,29 @@ const RestaurantScreen = ({ navigation }) => {
                     เลือกร้านอาหารสำหรับคุณ
                 </Text>
                 
+                <View>
+                    <ScrollView 
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={false}
+                        >
+                            {categories.map((category, index) => (
+                                <TouchableOpacity 
+                                    key={index}
+                                    onPress={() => setSelectedCategory(category)}
+                                    style={{
+                                        backgroundColor: selectedCategory === category ? theme.colors.primary : '#e1e1e1',
+                                        padding: 8,
+                                        borderRadius: 8,
+                                        marginRight: 8,
+                                        marginVertical: 8
+                                    }}
+                                >
+                                    <Text style={{ color: selectedCategory === category ? theme.colors.secondary : '#333', fontSize: 14 }}>{category}</Text>
+                                </TouchableOpacity>
+                            ))}
+                        </ScrollView>
+                </View>
+
                 <FlatList
                     data={filteredRestaurants}
                     renderItem={({ item }) => (

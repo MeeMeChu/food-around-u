@@ -31,9 +31,19 @@ export const AuthProvider = ({ children }) => {
         return () => unsubscribe();
     }, []);
 
-    const signUpWithEmail = async (email,password) => {
+    const signUpWithEmail = async (email, password, displayName) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
+            // const user = result.user;
+
+            // const userData = {
+            //     uid: user.uid,
+            //     displayName: displayName,
+            //     email: user.email,
+            // }
+
+            // await setDoc(doc(db, 'users', user.uid), userData);
+
         } catch (error) {
             console.error("Error during email registration:", error);
         }

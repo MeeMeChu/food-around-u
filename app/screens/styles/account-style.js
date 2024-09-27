@@ -17,6 +17,11 @@ const createAccountStyles = (theme) => {
         text: {
             fontFamily: theme.fonts.regular.fontFamily
         },
+        textWelcome: {
+            fontFamily: theme.fonts.medium.fontFamily,
+            fontSize: 24,
+            color: '#FFEB3B'
+        },
         btn: {
             margin : 16, 
             paddingVertical: 8,

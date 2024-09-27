@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const createLoginStyles = (theme) => {
     return StyleSheet.create({
         container: {
+            flex: 1,
             marginHorizontal: 16
         },
         text: {

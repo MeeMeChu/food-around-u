@@ -54,8 +54,8 @@ const HomeScreen = ({ navigation }) => {
             const latestRestaurants = querySnapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data(),
-                created_at: doc.created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
-                updated_at: doc.updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
+                created_at: doc.data().created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
+                updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
             }));
             
             setLatestRestaurants(latestRestaurants);
