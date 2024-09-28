@@ -1,56 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, StyleSheet, TextInput, FlatList, Image, TouchableOpacity } from "react-native";
 import { Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useApp } from "../contexts/AppContext";
 import { Ionicons } from "@expo/vector-icons";
-
-const foodMenu = [
-  {
-    id: '1',
-    name: "ข้าวหมูเด้ง",
-    description: "ปิ๊งป่อง",
-    rating: 5.0,
-    reviews: 15,
-    image: require('./../../assets/images/image1.png'),
-  },
-  {   
-    id: '2',
-    name: "ข้าวกุ้งเด้ง",
-    description: "ปิ๊งป่อง",
-    rating: 5.0,
-    reviews: 15,
-    image: require('./../../assets/images/image2.png'),
-  },
-  {
-    id: '3',
-    name: "ข้าวปลาเด้ง",
-    description: "ปิ๊งป่อง",
-    rating: 5.0,
-    reviews: 15,
-    image: require('./../../assets/images/image3.png'),
-  },
-  {
-    id: '4',
-    name: "ข้าวไก่เด้ง",
-    description: "ปิ๊งป่อง",
-    rating: 5.0,
-    reviews: 15,
-    image: require('./../../assets/images/image4.png'),
-  },
-  {
-    id: '5',
-    name: "ข้าวสุดหล่อเด้ง",
-    description: "ปิ๊งป่อง",
-    rating: 5.0,
-    reviews: 15,
-    image: require('./../../assets/images/image5.jpg'),
-  },
-];
+import { db } from '../configs/firebase-config';
+import { collection, getDocs } from "firebase/firestore"; 
+import { useApp } from "../contexts/AppContext"; 
 
 const RestaurantScreen = () => {
-  const { theme, bookmarkedRestaurants, toggleBookmark } = useApp(); // Access toggleBookmark
+  const { theme, bookmarkedRestaurants, toggleBookmark } = useApp(); //bookmark toggle
   const [search, setSearch] = useState("");
+  const [restaurants, setRestaurants] = useState([]); 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "restaurants")); 
+        const restaurantList = [];
+        querySnapshot.forEach((doc) => {
+          restaurantList.push({ id: doc.id, ...doc.data() });
+        });
+        setRestaurants(restaurantList); 
+      } catch (error) {
+        console.error("Error fetching restaurants: ", error);
+      }
+    };
+
+    fetchData();
+  }, []); 
 
   const styles = StyleSheet.create({
     safeArea: {
@@ -104,7 +81,6 @@ const RestaurantScreen = () => {
       padding: 8,
       borderRadius: 8,
     },
-    
   });
 
   return (
@@ -132,22 +108,24 @@ const RestaurantScreen = () => {
           เลือกร้านอาหารสำหรับคุณ
         </Text>
         <FlatList
-          data={foodMenu}
+          data={restaurants} // Use Firestore data
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
-              <Image source={item.image} style={styles.image} />
+              <Image source={{ uri: item.imageUrl }} style={styles.image} />
               <View style={styles.itemTextContainer}>
-                <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{item.name}</Text>
+                <Text style={[styles.text, { fontSize: 16, fontWeight: 'bold' }]}>{item.title}</Text>
                 <Text style={[styles.text, { fontSize: 14, color: 'gray' }]}>{item.description}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Ionicons name="star" size={16} color="red" />
-                  <Text style={[styles.text, { fontSize: 14, color: 'red', marginLeft: 4 }]}>{item.rating}</Text>
-                  <Text style={[styles.text, { fontSize: 14, color: 'gray', marginLeft: 8 }]}>{item.reviews} รีวิว</Text>
+                  <Text style={[styles.text, { fontSize: 14, color: 'red', marginLeft: 4 }]}>{item.rating || 5.0}</Text>
+                  <Text style={[styles.text, { fontSize: 14, color: 'gray', marginLeft: 8 }]}>
+                    {item.reviews || 15} รีวิว
+                  </Text>
                 </View>
               </View>
               <TouchableOpacity 
                 style={{ marginRight: 8 }} 
-                onPress={() => toggleBookmark(item.id)} // Use the toggleBookmark function
+                onPress={() => toggleBookmark(item.id)} 
               >
                 <Ionicons 
                   name={bookmarkedRestaurants.includes(item.id) ? "bookmark" : "bookmark-outline"} 
