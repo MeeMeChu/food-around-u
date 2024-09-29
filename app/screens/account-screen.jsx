@@ -18,9 +18,12 @@ const AccountScreen = ({navigation}) => {
                 {auth?.userLoggedIn ? (
                     // Login แล้ว
                     <View style={styles.safeArea}>
-                        <View style={styles.container}>
+                        <View style={[styles.container, { marginVertical: 8 }]}>
                             <Text style={styles.textWelcome}>ยินดีต้อนรับ, {auth?.currentUser?.displayName}</Text>
-                        
+                            <View style={styles.imageContainer}>
+                                <Image source={require('./../../assets/images/image_account.png')}/>
+                            </View>
+                            
                         </View>
                         <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Login')}>
                             <Text style={styles.btnText}>ดูโปรไฟล์ของฉัน</Text>
@@ -39,11 +42,10 @@ const AccountScreen = ({navigation}) => {
                 )}
             </SafeAreaView>
             <View style={styles.container}>
-                <View style={styles.settingContainer}>
+                {/* <View style={styles.settingContainer}>
                     <Ionicons name="settings" size={20} color="black" />
                     <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>ตั้งค่า</Text>
-                </View>
-                <Divider bold/>
+                </View> */}
                 {auth?.userLoggedIn ? (
                     <View style={styles.settingContainer}>
                         <Ionicons name="log-out" size={24} color={theme.colors.primary} />
@@ -54,6 +56,7 @@ const AccountScreen = ({navigation}) => {
                 ) : (
                     null
                 )}
+                <Divider bold/>
             </View>
         </View>
     );

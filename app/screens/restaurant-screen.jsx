@@ -7,24 +7,28 @@ import {
     FlatList, 
     Image, 
     ScrollView,
-    RefreshControl 
+    RefreshControl, 
 } from 'react-native';
-import { Text } from 'react-native-paper'
+import { ActivityIndicator, Text } from 'react-native-paper'
 import { Ionicons } from '@expo/vector-icons';
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, Timestamp, updateDoc } from 'firebase/firestore';
 import dayjs from 'dayjs';
 
 import createRestaurantStyles from './styles/restaurant-style';
 import { useApp } from '../contexts/AppContext';
 import { db } from '../configs/firebase-config';
+import { useAuth } from '../contexts/AuthContext';
+import { addBookmark, checkIfBookmarked, removeBookmark } from '../utils/bookmark';
 
 const RestaurantScreen = ({ navigation }) => {
 
+    const auth = useAuth();
     const { theme } = useApp();
     const [refreshing, setRefreshing] = useState(false);
     const [search, setSearch] = useState('');
-    const [restaurantsList ,setRestaurantslist] = useState([]);
+    const [restaurantsList ,setRestaurantsList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All'); // เก็บหมวดหมู่ที่เลือก
+    const [loading, setLoading] = useState(true);
 
     const categories = ['All','บุฟเฟต์', 'ก๋วยเตี๋ยว', 'ของหวาน', 'อาหารตามสั่ง'];
 
@@ -34,24 +38,36 @@ const RestaurantScreen = ({ navigation }) => {
     );
 
     const fetchRestaurants = async () => {
-        try {
+        try {   
+            setLoading(true);
             const querySnapshot = await getDocs(collection(db, 'restaurants'));
-            const docsData = querySnapshot.docs.map(doc => ({ 
-                id: doc.id, 
-                ...doc.data(),
-                created_at: doc.data().created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
-                updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
+            const docsData = await Promise.all(querySnapshot.docs.map(async doc => {
+                const restaurantData = {
+                    id: doc.id,
+                    ...doc.data(),
+                    created_at: doc.data().created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
+                    updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null,
+                };
+                
+                // Check if the restaurant is bookmarked by the user
+                const isBookmarked = await checkIfBookmarked(restaurantData.id, auth);
+                restaurantData.bookmarked = isBookmarked;
+
+                return restaurantData;
             }));
-            setRestaurantslist(docsData);
-            console.log("Fetched Food: ", docsData);
+
+            setRestaurantsList(docsData);
+            // console.log("Fetched Food: ", docsData);
         } catch (error) {
             console.error("Error fetching collection data: ", error);
+        } finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
         fetchRestaurants();
-    }, []);
+    }, [auth.userLoggedIn]);
 
     const onRefresh = async () => {
         setRefreshing(true);  // เริ่มการรีเฟรช
@@ -59,6 +75,26 @@ const RestaurantScreen = ({ navigation }) => {
         setRefreshing(false); // จบการรีเฟรช
     };
 
+    const handleBookmark = async (restaurant) => {
+        if (!auth?.currentUser || !auth?.currentUser?.uid) {
+            // console.error("User not logged in or UID is undefined");
+            return;
+        }
+
+        const updatedRestaurants = [...restaurantsList];
+        const restaurantIndex = updatedRestaurants.findIndex(r => r.id === restaurant.id);
+
+        if (restaurant.bookmarked) {
+            await removeBookmark(restaurant.id, auth);
+        } else {
+            await addBookmark(restaurant, auth);
+        }
+
+        // Toggle the bookmark status in the local state
+        updatedRestaurants[restaurantIndex].bookmarked = !restaurant.bookmarked;
+        setRestaurantsList(updatedRestaurants);
+    };
+        
     const styles = createRestaurantStyles(theme);
 
     return (
@@ -90,7 +126,7 @@ const RestaurantScreen = ({ navigation }) => {
             </SafeAreaView>
 
 
-            <View style={[styles.container, { marginTop: 8}]}>
+            <View style={[styles.container, { marginTop: 8, flex: 1}]}>
                 <Text style={[styles.text, { fontSize: 20 }]}>
                     เลือกร้านอาหารสำหรับคุณ
                 </Text>
@@ -118,6 +154,11 @@ const RestaurantScreen = ({ navigation }) => {
                         </ScrollView>
                 </View>
 
+                { loading ? (
+                    <View style={styles.loading}>
+                        <ActivityIndicator size="large" color={theme.colors.primary} />
+                    </View>
+                ) : (
                 <FlatList
                     data={filteredRestaurants}
                     renderItem={({ item }) => (
@@ -149,9 +190,10 @@ const RestaurantScreen = ({ navigation }) => {
                                 </View>
                                 <TouchableOpacity 
                                     style={{ marginRight: 8 }} 
+                                    onPress={() => handleBookmark(item)}
                                 >
                                     <Ionicons 
-                                        name={"bookmark-outline"} 
+                                        name={item.bookmarked ? "bookmark" : "bookmark-outline"} 
                                         size={24} 
                                         color={theme.colors.primary} 
                                     />
@@ -166,6 +208,7 @@ const RestaurantScreen = ({ navigation }) => {
                         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} /> // เพิ่ม refresh control
                     }
                 />
+                )}
             </View>
         </View>
     )

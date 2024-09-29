@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
     const [ loading, setLoading ] = useState(true);
 
     console.log("Login แล้วหรือยัง : ", userLoggedIn);
-    console.log("User : ", currentUser);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (user) => {

@@ -57,6 +57,11 @@ const createRestaurantStyles = (theme) => {
             padding: 8,
             borderRadius: 8,
         },
+        loading: {
+            flex: 1,
+            justifyContent: 'center', 
+            alignItems: 'center'
+        }
     });
 }
 

@@ -5,7 +5,7 @@ import AccountScreen from '../screens/account-screen';
 import { useApp } from '../contexts/AppContext';
 import { Ionicons } from '@expo/vector-icons';
 import RestaurantScreen from '../screens/restaurant-screen';
-import AddRestaurants from '../screens/scripts';
+import BookmarkScreen from '../screens/bookmark-screen';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +39,7 @@ const TabNavigator = () => {
         >
             <Tab.Screen options={{ title: 'หน้าแรก' }} name="Home" component={HomeScreen} />
             <Tab.Screen options={{ title: 'ร้านอาหาร' }} name="Restaurant" component={RestaurantScreen} />
-            <Tab.Screen options={{ title: 'ที่บันทึกไว้' }} name="Bookmark" component={AddRestaurants} />
+            <Tab.Screen options={{ title: 'ที่บันทึกไว้' }} name="Bookmark" component={BookmarkScreen} />
             <Tab.Screen options={{ title: 'ฉัน' }} name="Account" component={AccountScreen} />
         </Tab.Navigator>
     );
