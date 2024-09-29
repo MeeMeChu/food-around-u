@@ -67,7 +67,7 @@ const RestaurantScreen = ({ navigation }) => {
 
     useEffect(() => {
         fetchRestaurants();
-    }, [auth.userLoggedIn]);
+    }, [auth?.userLoggedIn]);
 
     const onRefresh = async () => {
         setRefreshing(true);  // เริ่มการรีเฟรช

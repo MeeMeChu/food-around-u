@@ -28,6 +28,7 @@ export const addBookmark = async (restaurant, auth) => {
             address: restaurant.address,
             locationURL: restaurant.locationURL,
             phone: restaurant.phone,
+            views: restaurant.views,
             bookmarkedAt: Timestamp.now()
         });
         console.log("Bookmark added!");
