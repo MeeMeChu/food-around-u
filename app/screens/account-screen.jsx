@@ -44,26 +44,26 @@ const AccountScreen = ({navigation}) => {
                     <Fragment>
                         <View style={styles.settingContainer}>
                             <Ionicons name="storefront" size={20} color="black" />
-                            <TouchableOpacity onPress={() => navigation.navigate('CreateRestaurant')}>
-                                <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>เพิ่มร้านอาหาร</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('ListRestaurant')}>
+                                <Text style={[styles.text, { marginLeft: 8 , fontSize: 18}]}>เพิ่มร้านอาหาร</Text>
                             </TouchableOpacity>
-                        </View>
-                        <Divider bold/>
-                        <View style={styles.settingContainer}>
-                            <Ionicons name="settings" size={20} color="black" />
-                            <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>ดูโปรไฟล์ของฉัน</Text>
                         </View>
                         <Divider bold/>
                         <View style={styles.settingContainer}>
                             <Ionicons name="log-out" size={24} color={theme.colors.primary} />
                             <TouchableOpacity onPress={() => auth.logout()}>
-                                <Text style={[styles.text, { marginLeft: 4 , fontSize: 18, color: theme.colors.primary }]}>ออกจากระบบ</Text>
+                                <Text style={[styles.text, { marginLeft: 8 , fontSize: 18, color: theme.colors.primary }]}>ออกจากระบบ</Text>
                             </TouchableOpacity>
                         </View>
                     </Fragment>
                 ) : (
                     null
                 )}
+                <Divider bold/>
+                <View style={styles.settingContainer}>
+                    <Ionicons name="information-circle-sharp" size={24} color="black" />
+                    <Text style={[styles.text, { marginLeft: 8 , fontSize: 18}]}>เวอร์ชั่น 1.0.0</Text>
+                </View>
                 <Divider bold/>
             </View>
         </View>

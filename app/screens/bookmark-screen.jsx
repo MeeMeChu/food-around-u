@@ -50,7 +50,7 @@ const BookmarkScreen = ({ navigation }) => {
 
   useEffect(() => {
     fetchBookmarks();
-  }, []);
+  }, [auth?.userLoggedIn]);
 
   const styles = createBookmarkStyles(theme);
 
@@ -72,7 +72,7 @@ const BookmarkScreen = ({ navigation }) => {
                   color: '#fff'
               }}
             >
-                รายการร้อนอาหารที่ฉันชื่อชอบ
+                รายการร้านอาหารที่ฉันชื่นชอบ
             </Text>
         </View>
       </SafeAreaView>
@@ -135,7 +135,7 @@ const BookmarkScreen = ({ navigation }) => {
             </Fragment>
           )}
         </View>
-      ): (
+      ) : (
         <View style={styles.loading}>
           <Text style={styles.text}>กรุณาเข้าสู่ระบบก่อนจึงจะสามารถบันทึกได้!</Text>
           <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Login')}>

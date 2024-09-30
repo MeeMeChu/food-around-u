@@ -7,6 +7,8 @@ import RestaurantDetail from '../screens/restaurant-detail-screen';
 import LoginScreen from '../screens/login-screen';
 import SignUpScreen from '../screens/signup-screen';
 import CreateRestaurantScreen from '../screens/create-restaurant-screen';
+import ListRestaurantScreen from '../screens/list-restaurant-screen';
+import EditRestaurantScreen from '../screens/edit-restaurant-style';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +31,22 @@ const Routes = () => {
                     headerTintColor: '#fff',
                 }}/>
                 <Stack.Screen name="CreateRestaurant" component={CreateRestaurantScreen} options={{
+                    headerTitle: '',
+                    headerBackTitle: 'กลับ',
+                    headerStyle: {
+                        backgroundColor: theme.colors.primary
+                    },
+                    headerTintColor: '#fff',
+                }}/>
+                <Stack.Screen name="EditRestaurant" component={EditRestaurantScreen} options={{
+                    headerTitle: '',
+                    headerBackTitle: 'กลับ',
+                    headerStyle: {
+                        backgroundColor: theme.colors.primary
+                    },
+                    headerTintColor: '#fff',
+                }}/>
+                <Stack.Screen name="ListRestaurant" component={ListRestaurantScreen} options={{
                     headerTitle: '',
                     headerBackTitle: 'กลับ',
                     headerStyle: {

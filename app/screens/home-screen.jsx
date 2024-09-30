@@ -30,8 +30,8 @@ const HomeScreen = ({ navigation }) => {
             const topRestaurants = querySnapshot.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data(),
-                created_at: doc.created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
-                updated_at: doc.updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
+                created_at: doc.data().created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
+                updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
             }));
             
             setTopRestaurantsList(topRestaurants)
@@ -125,12 +125,14 @@ const HomeScreen = ({ navigation }) => {
                         data={category}
                         horizontal={true} // กำหนดให้ FlatList แสดงในแนวนอน
                         renderItem={({ item }) => (
-                            <View style={styles.item}>
-                                <Image source={{ uri : item.imageUrl }} style={styles.image}/>
-                                <View style={styles.textContainer}>
-                                    <Text style={[styles.text, {color: '#fff', fontSize: 16}]}>{item.name}</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('Restaurant')}>
+                                <View style={styles.item}>
+                                    <Image source={{ uri : item.imageUrl }} style={styles.image}/>
+                                    <View style={styles.textContainer}>
+                                        <Text style={[styles.text, {color: '#fff', fontSize: 16}]}>{item.name}</Text>
+                                    </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         )}
                         keyExtractor={item => item.id}
                         showsHorizontalScrollIndicator={false} // ซ่อนสัญลักษณ์การเลื่อนแนวนอน

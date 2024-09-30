@@ -15,7 +15,8 @@ const CreateRestaurantScreen = ({ navigation }) => {
   const [formData, setFormData] = useState({
     title: '',
     imageUrl: '',
-    locationUrl: '',
+    locationURL: '',
+    address: '',
     phone: '',
     category: '',
     author: auth?.currentUser?.displayName,
@@ -26,7 +27,7 @@ const CreateRestaurantScreen = ({ navigation }) => {
 
   const handleSubmit = async () => {
 
-    if (!formData.title || !formData.imageUrl || !formData.phone || !formData.locationUrl || !formData.category) {
+    if (!formData.title || !formData.imageUrl || !formData.phone || !formData.locationURL || !formData.category || !formData.address) {
       setError('กรุณากรอกข้อมูลให้ครบถ้วน');
       return;
     }
@@ -34,6 +35,7 @@ const CreateRestaurantScreen = ({ navigation }) => {
     try {
       const response = await addDoc(collection(db, 'restaurants'), {
         ...formData,
+        views: 0,
         created_at: Timestamp.now(),
         updated_at: Timestamp.now(),
       });
@@ -154,15 +156,15 @@ const CreateRestaurantScreen = ({ navigation }) => {
                 style={styles.input}
                 placeholder="https://maps.google.com/"
                 placeholderTextColor="#999"
-                value={formData.locationUrl}
-                onChangeText={(value) => handleChange('locationUrl', value)}
+                value={formData.locationURL}
+                onChangeText={(value) => handleChange('locationURL', value)}
                 keyboardType="url"
                 autoCapitalize="none"
             />
           </View>
           <View>
             <View style={styles.textContainer}>
-                <Text style={[styles.text, { fontSize : 18 }]}>รูปภาพ</Text>
+                <Text style={[styles.text, { fontSize : 18 }]}>รูปภาพ (URL)</Text>
             </View>
             <TextInput
                 style={styles.input}

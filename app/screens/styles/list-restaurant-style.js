@@ -1,22 +1,19 @@
 import { StyleSheet } from "react-native";
 
-const createBookmarkStyles = (theme) => {
+const createListRestaurantStyles = (theme) => {
     return StyleSheet.create({
         safeArea: {
-            flex: 1  
+            flex: 1,
         },
         container: {
+            flex: 1,
             marginHorizontal: 16,
-            marginTop: 16
-        },
-        header: {
-            paddingVertical: 8,
-            backgroundColor: theme.colors.primary,
-            paddingHorizontal: 16,
-            flexDirection: 'row',
         },
         text: {
             fontFamily: theme.fonts.regular.fontFamily
+        },
+        textBold: {
+            fontFamily: theme.fonts.medium.fontFamily
         },
         itemContainer: {
             flexDirection: 'row',
@@ -37,14 +34,16 @@ const createBookmarkStyles = (theme) => {
             margin: 8,
             borderRadius: 8,
         },
-        loading: {
-            flex: 1,
-            justifyContent: 'center', 
-            alignItems: 'center'
+        headerContainer: {
+            alignItems: 'center',
+            marginTop: 16,
+        },
+        textContainer: {
+            margin : 4
         },
         btn: {
-            margin : 16, 
-            padding: 8,
+            marginVertical: 8,
+            paddingVertical: 8,
             borderRadius: 8,
             backgroundColor: theme.colors.primary
         },
@@ -54,7 +53,12 @@ const createBookmarkStyles = (theme) => {
             fontSize: 18,
             fontFamily: theme.fonts.medium.fontFamily,
         },
+        loading: {
+            flex: 1,
+            justifyContent: 'center', 
+            alignItems: 'center'
+        },
     });
 }
 
-export default createBookmarkStyles;
+export default createListRestaurantStyles;

@@ -20,20 +20,21 @@ import { db } from '../configs/firebase-config';
 import { useAuth } from '../contexts/AuthContext';
 import { addBookmark, checkIfBookmarked, removeBookmark } from '../utils/bookmark';
 
-const RestaurantScreen = ({ navigation }) => {
+const RestaurantScreen = ({ navigation, route }) => {
 
     const auth = useAuth();
     const { theme } = useApp();
     const [refreshing, setRefreshing] = useState(false);
     const [search, setSearch] = useState('');
     const [restaurantsList ,setRestaurantsList] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState('All'); // เก็บหมวดหมู่ที่เลือก
+    const [selectedCategory, setSelectedCategory] = useState('ทั้งหมด'); // เก็บหมวดหมู่ที่เลือก
     const [loading, setLoading] = useState(true);
 
-    const categories = ['All','บุฟเฟต์', 'ก๋วยเตี๋ยว', 'ของหวาน', 'อาหารตามสั่ง'];
+
+    const categories = ['ทั้งหมด','บุฟเฟต์', 'ก๋วยเตี๋ยว', 'ของหวาน', 'อาหารตามสั่ง'];
 
     const filteredRestaurants = restaurantsList.filter(item =>
-        (selectedCategory === 'All' || item.category === selectedCategory) &&
+        (selectedCategory === 'ทั้งหมด' || item.category === selectedCategory) &&
         item.title.toLowerCase().includes(search.toLowerCase())
     );
 
@@ -46,7 +47,7 @@ const RestaurantScreen = ({ navigation }) => {
                     id: doc.id,
                     ...doc.data(),
                     created_at: doc.data().created_at ? dayjs(doc.data().created_at.toDate()).format('DD/MM/YYYY') : null,
-                    updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null,
+                    updated_at: doc.data().updated_at ? dayjs(doc.data().updated_at.toDate()).format('DD/MM/YYYY') : null
                 };
                 
                 // Check if the restaurant is bookmarked by the user
