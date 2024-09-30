@@ -4,6 +4,7 @@ import { useApp } from '../contexts/AppContext';
 import createAccountStyles from './styles/account-style';
 import { Ionicons } from '@expo/vector-icons';
 import { useAuth } from '../contexts/AuthContext';
+import { Fragment } from 'react';
 
 
 const AccountScreen = ({navigation}) => {
@@ -25,9 +26,6 @@ const AccountScreen = ({navigation}) => {
                             </View>
                             
                         </View>
-                        <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Login')}>
-                            <Text style={styles.btnText}>ดูโปรไฟล์ของฉัน</Text>
-                        </TouchableOpacity>
                     </View>
                 ) : (
                     // ยังไม่ได้ login
@@ -42,17 +40,27 @@ const AccountScreen = ({navigation}) => {
                 )}
             </SafeAreaView>
             <View style={styles.container}>
-                {/* <View style={styles.settingContainer}>
-                    <Ionicons name="settings" size={20} color="black" />
-                    <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>ตั้งค่า</Text>
-                </View> */}
                 {auth?.userLoggedIn ? (
-                    <View style={styles.settingContainer}>
-                        <Ionicons name="log-out" size={24} color={theme.colors.primary} />
-                        <TouchableOpacity onPress={() => auth.logout()}>
-                            <Text style={[styles.text, { marginLeft: 4 , fontSize: 18, color: theme.colors.primary }]}>ออกจากระบบ</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <Fragment>
+                        <View style={styles.settingContainer}>
+                            <Ionicons name="storefront" size={20} color="black" />
+                            <TouchableOpacity onPress={() => navigation.navigate('CreateRestaurant')}>
+                                <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>เพิ่มร้านอาหาร</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Divider bold/>
+                        <View style={styles.settingContainer}>
+                            <Ionicons name="settings" size={20} color="black" />
+                            <Text style={[styles.text, { marginLeft: 4 , fontSize: 18}]}>ดูโปรไฟล์ของฉัน</Text>
+                        </View>
+                        <Divider bold/>
+                        <View style={styles.settingContainer}>
+                            <Ionicons name="log-out" size={24} color={theme.colors.primary} />
+                            <TouchableOpacity onPress={() => auth.logout()}>
+                                <Text style={[styles.text, { marginLeft: 4 , fontSize: 18, color: theme.colors.primary }]}>ออกจากระบบ</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </Fragment>
                 ) : (
                     null
                 )}

@@ -6,6 +6,7 @@ import TabNavigator from './tab-navigator';
 import RestaurantDetail from '../screens/restaurant-detail-screen';
 import LoginScreen from '../screens/login-screen';
 import SignUpScreen from '../screens/signup-screen';
+import CreateRestaurantScreen from '../screens/create-restaurant-screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,14 @@ const Routes = () => {
                 
                 {/* หน้าที่ไม่ได้อยู่ใน Tab */}
                 <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} options={{
+                    headerTitle: '',
+                    headerBackTitle: 'กลับ',
+                    headerStyle: {
+                        backgroundColor: theme.colors.primary
+                    },
+                    headerTintColor: '#fff',
+                }}/>
+                <Stack.Screen name="CreateRestaurant" component={CreateRestaurantScreen} options={{
                     headerTitle: '',
                     headerBackTitle: 'กลับ',
                     headerStyle: {
