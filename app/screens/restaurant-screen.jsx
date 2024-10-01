@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { ActivityIndicator, Text } from 'react-native-paper'
 import { Ionicons } from '@expo/vector-icons';
-import { collection, deleteDoc, doc, getDoc, getDocs, setDoc, Timestamp, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import dayjs from 'dayjs';
 
 import createRestaurantStyles from './styles/restaurant-style';
@@ -20,7 +20,7 @@ import { db } from '../configs/firebase-config';
 import { useAuth } from '../contexts/AuthContext';
 import { addBookmark, checkIfBookmarked, removeBookmark } from '../utils/bookmark';
 
-const RestaurantScreen = ({ navigation, route }) => {
+const RestaurantScreen = ({ navigation }) => {
 
     const auth = useAuth();
     const { theme } = useApp();

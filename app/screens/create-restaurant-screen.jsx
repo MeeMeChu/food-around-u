@@ -140,9 +140,9 @@ const CreateRestaurantScreen = ({ navigation }) => {
                   paddingHorizontal: 10,
                   paddingVertical: 8,
                   borderWidth: 1,
-                  borderColor: '#',
+                  borderColor: '#ccc',
                   backgroundColor: '#fff',
-                  borderRadius: 8,
+                  borderRadius: 4,
                   paddingRight: 30, // เพื่อให้มีพื้นที่สำหรับไอคอน dropdown
                 },
               }}
