@@ -2,10 +2,6 @@
 โปรเจคในรายวิชา Moblie Application Programming
 หากต้องการศึกษาตัวโปรแกรม สามารถ ติดตั้งโปรเจคด้วยวิธีดังนี้
 
-## Food Around You
-โปรเจคในรายวิชา Moblie Application Programming
-หากต้องการศึกษาตัวโปรแกรม สามารถ ติดตั้งโปรเจคด้วยวิธีดังนี้
-
 
 ## Installation
 
