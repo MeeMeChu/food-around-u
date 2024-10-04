@@ -3,6 +3,14 @@
 หากต้องการศึกษาตัวโปรแกรม สามารถ ติดตั้งโปรเจคด้วยวิธีดังนี้
 
 
+## Tech Stack
+
+**Client:** React Native, Expo
+
+**Database:** Cloud Firestore
+
+**Authentication:** Firebase Authentication
+
 ## Installation
 
 วิธีการติดตั้งโปรเจค ควรมี NodeJS ,git อยู่ในเครื่องก่อน แล้วทำขั้นตอนดังนี้
